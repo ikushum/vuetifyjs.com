@@ -6,7 +6,6 @@ export default [
     component: 'components/Doc',
     icon: 'mdi-view-dashboard',
     items: [
-      { name: 'api-explorer', title: 'API explorer' },
       { name: 'alerts', title: 'Alerts' },
       { name: 'avatars', title: 'Avatars' },
       { name: 'badges', title: 'Badges' },

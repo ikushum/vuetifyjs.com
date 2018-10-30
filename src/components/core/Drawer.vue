@@ -1,6 +1,7 @@
 <template lang="pug">
   v-navigation-drawer(
     app
+    class="grey lighten-4"
   right
   )#app-drawer
     v-container(
