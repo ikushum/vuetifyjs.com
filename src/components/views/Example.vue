@@ -1,8 +1,6 @@
 <template lang="pug">
   views-doc(:id="folder")
-    template(slot-scope="{ namespace }")
       section(v-if="usage")#usage
-        helpers-section-head(value="Generic.Pages.usage")
         helpers-example(
           :new-in="usage.new"
           :file="`${folder}/${usage.file}`"
@@ -13,66 +11,7 @@
           :desc="usage.desc"
         )
 
-      section#api
-        helpers-section-head(value="Generic.Pages.api")
-        v-card
-          v-tabs(
-            v-model="tab"
-            color="grey lighten-3"
-            :slider-color="computedTabs.length ? 'primary' : 'transparent'"
-          )
-            template(v-for="(tab, i) in computedTabs")
-              v-tab(
-                :key="i"
-                :href="`#${tab}`"
-              ) {{ tab.replace(/([A-Z])/g, ' $1') }}
-          v-card-title
-            v-select(
-              label="Component"
-              hide-details
-              single-line
-              v-bind:items="components"
-              v-model="current"
-              menu-props="auto"
-              :disabled="components.length < 2"
-            )
-            v-spacer
-            v-spacer.hidden-sm-and-down
-            v-text-field(
-              append-icon="search"
-              label="Search..."
-              single-line
-              hide-details
-              v-model="search"
-            )
-          v-tabs-items(touchless v-model="tab").white
-            v-tab-item(
-              v-for="(tabItem, i) in computedTabs"
-              :value="tabItem"
-              :key="i"
-            )
-              v-card(flat v-if="hasTab(tabItem)")
-                helpers-parameters(
-                  :headers="headers[tabItem]"
-                  :items="currentApi[tabItem]"
-                  :namespace="namespace"
-                  :search="search"
-                  :target="current"
-                  :type="tabItem"
-                  :key="`${tabItem}${namespace}${current}`"
-                )
-
-      section(v-if="supplemental.length > 0")#supplemental
-        helpers-section-head(value="Generic.Pages.supplemental")
-        component(
-          v-for="sup in supplemental"
-          :key="sup"
-          :is="`Misc${sup}`"
-        )
-
-      slot(name="top")
       section(v-if="examples.length > 1")#examples
-        helpers-section-head(value="Generic.Pages.examples")
         template(v-for="(example, i) in examples.slice(1)")
           helpers-example(
             :header="example.header"

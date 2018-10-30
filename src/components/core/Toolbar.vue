@@ -11,10 +11,6 @@
     :manual-scroll="isManualScrolled"
     ref="toolbar"
   )#app-toolbar
-    v-toolbar-side-icon(
-      @click="$store.commit('app/DRAWER_TOGGLE')"
-      v-show="!stateless"
-    )
     router-link(:to="logoLink").d-flex
       img(
         src="https://cdn.vuetifyjs.com/images/logos/v-alt.svg"
