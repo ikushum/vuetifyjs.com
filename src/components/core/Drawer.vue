@@ -1,26 +1,12 @@
 <template lang="pug">
   v-navigation-drawer(
     app
-    v-model="inputValue"
-    :stateless="isFullscreen"
+  right
   )#app-drawer
-    div.text-xs-center.pt-3
-      div(
-        v-for="diamond in diamonds"
-        :key="diamond.name"
-      )
-        a(
-          :href="diamond.href"
-          target="_blank"
-          rel="noopener"
-          @click="$ga.event('drawer sponsor click', 'click', diamond.name)"
-        )
-          img.diamond-sponsor(
-            :src="`https://cdn.vuetifyjs.com/images/${diamond.logo}`"
-            :alt="diamond.Name"
-          )
-      misc-patreon-btn
-    v-container(fluid)
+    v-container(
+      fluid
+      class="pb-0"
+    )
       v-text-field(
         placeholder="Search"
         append-icon="search"
@@ -33,65 +19,39 @@
         ref="search"
         light
       )
-    div.pt-3.text-xs-center
-      a(
-        href="https://vuejobs.com/?utm_source=vuejobs&utm_medium=banner&utm_campaign=linking&ref=vuetifyjs.com"
-        target="_blank"
-        rel="noopener"
-        class="d-inline-block"
-        @click="$ga.event('drawer jobs click', 'click', 'vuejobs')"
-      )
-        img(
-          src="https://cdn.vuetifyjs.com/images/affiliates/vuejobs-logo.svg"
-          alt="VueJobs"
-          title="VueJobs"
-          width="30%"
-        )
-
-    v-list(dense expand)
+    v-list(dense)
       template(v-for="item in items")
         <!--group with subitems-->
-        v-list-group(
+        v-flex(
           v-if="item.items",
           :group="item.group",
           :prepend-icon="item.icon",
           no-action
         )
-          v-list-tile(slot="activator" ripple)
+          v-flex(slot="activator" ripple)
             v-list-tile-content
-              v-list-tile-title {{ item.title }}
           template(v-for="(subItem, i) in item.items")
             <!--sub group-->
-            v-list-group(
+            v-flex(
               v-if="subItem.items",
               :group="subItem.group",
               sub-group
             )
               v-list-tile(slot="activator" ripple)
                 v-list-tile-content
-                  v-list-tile-title {{ subItem.title }}
-              v-chip(
-                v-if="subItem.badge"
-                :color="subItem.color || 'primary'"
-                class="white--text pa-0 v-chip--x-small"
-                disabled
-                slot="appendIcon"
-              ) {{ subItem.badge }}
+                  v-list-tile-title.caption.grey--text {{ subItem.title }}
               v-list-tile(
                 v-for="(grand, i) in subItem.items",
                 :key="i",
+                class="ml-4",
                 :to="genChildTarget(item, grand)",
                 :href="grand.href"
                 ripple
               )
                 v-list-tile-content
                   v-list-tile-title {{ grand.title }}
-                v-chip(
-                  v-if="grand.badge"
-                  :color="grand.color || 'primary'"
-                  class="white--text pa-0 v-chip--x-small"
-                  disabled
-                ) {{ grand.badge }}
+
+
             <!--child item-->
             v-list-tile(
               v-else,
@@ -105,46 +65,12 @@
               v-list-tile-content
                 v-list-tile-title
                   span {{ subItem.title }}
-              v-chip(
-                v-if="subItem.badge"
-                :color="subItem.color || 'primary'"
-                class="white--text pa-0 v-chip--x-small"
-                disabled
-              ) {{ subItem.badge }}
               v-list-tile-action(v-if="subItem.action")
                 v-icon(:class="[subItem.actionClass || 'success--text']") {{ subItem.action }}
 
         v-subheader(v-else-if="item.header").grey--text {{ item.header }}
         v-divider(v-else-if="item.divider")
 
-        <!--top-level link-->
-        v-list-tile(
-          v-else,
-          :to="!item.href ? { name: item.name } : null",
-          :href="item.href",
-          ripple,
-          :disabled="item.disabled",
-          :target="item.target",
-          rel="noopener"
-        )
-          v-list-tile-action(v-if="item.icon")
-            v-icon {{ item.icon }}
-          v-list-tile-content
-            v-list-tile-title {{ item.title }}
-          v-chip(
-            v-if="item.badge"
-            class="white--text pa-0 v-chip--x-small"
-            :color="item.color || 'primary'"
-            disabled
-          ) {{ item.badge }}
-          v-list-tile-action(v-if="item.subAction")
-            v-icon(class="success--text") {{ item.subAction }}
-          v-chip(
-            v-else-if="item.chip"
-            label
-            small
-            class="caption blue lighten-2 white--text mx-0"
-          ) {{ item.chip }}
 </template>
 
 <script>

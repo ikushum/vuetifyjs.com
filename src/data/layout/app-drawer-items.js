@@ -1,73 +1,5 @@
 export default [
-  { header: 'Core documentation' },
-  {
-    title: 'Getting started',
-    group: 'getting-started',
-    icon: 'mdi-speedometer',
-    items: [
-      { name: 'QuickStart', title: 'Quick Start' },
-      { name: 'WhyVuetify', title: 'Why Vuetify?' },
-      { name: 'FrequentlyAskedQuestions', title: 'Frequently asked questions' },
-      { name: 'SponsorsAndBackers', title: 'Sponsors and backers' },
-      { name: 'Contributing', title: 'Contributing' },
-      { name: 'Roadmap', title: 'Roadmap' },
-      { name: 'Consulting', title: 'Consulting and support', badge: 'new' }
-    ]
-  },
-  {
-    title: 'Framework Options',
-    group: 'framework',
-    icon: 'mdi-buffer',
-    items: [
-      { name: 'Icons', title: 'Icons' },
-      { name: 'Internationalization', title: 'Internationalization' }
-    ]
-  },
-  {
-    title: 'Application layout',
-    group: 'layout',
-    icon: 'mdi-page-layout-body',
-    items: [
-      { name: 'PreDefined', title: 'Pre-defined layouts' },
-      { name: 'PreMadeThemes', title: 'Pre-made themes' },
-      {
-        title: 'Grid system',
-        group: 'grid',
-        namespace: 'layout',
-        items: [
-          { name: 'grid', title: 'Grid' },
-          { name: 'grid-lists', title: 'Grid lists' }
-        ]
-      },
-      { name: 'Breakpoints', title: 'Breakpoints' },
-      { name: 'AspectRatios', title: 'Aspect ratios' },
-      { name: 'Spacing', title: 'Spacing' },
-      { name: 'Alignment', title: 'Text alignment' },
-      { name: 'Display', title: 'Display' },
-      { name: 'Elevation', title: 'Elevation' },
-      { name: 'Sandbox', title: 'Sandbox' }
-    ]
-  },
-  {
-    title: 'Styles & themes',
-    group: 'style',
-    icon: 'mdi-format-color-fill',
-    items: [
-      { name: 'Colors', title: 'Colors' },
-      { name: 'Theme', title: 'Theme' },
-      { name: 'Typography', title: 'Typography' },
-      { name: 'Content', title: 'Content' }
-    ]
-  },
-  {
-    title: 'Motion & transitions',
-    group: 'motion',
-    icon: 'mdi-clock-fast',
-    items: [
-      { name: 'Scrolling', title: 'Scrolling' },
-      { name: 'Transitions', title: 'Transitions' }
-    ]
-  },
+  { header: 'Component Examples' },
   {
     title: 'UI components',
     group: 'components',
@@ -150,32 +82,5 @@ export default [
       { name: 'treeview', title: 'Treeview', badge: 'new' }
     ]
   },
-  {
-    title: 'Directives',
-    group: 'directives',
-    component: 'components/Doc',
-    icon: 'mdi-function',
-    items: [
-      { name: 'resizing', title: 'Resizing' },
-      { name: 'ripples', title: 'Ripples' },
-      { name: 'scrolling', title: 'Scrolling' },
-      { name: 'touch-support', title: 'Touch support' }
-    ]
-  },
-  { divider: true },
-  { header: 'Additional resources' },
-  {
-    title: 'Advanced tutorials',
-    group: 'guides',
-    icon: 'mdi-television-guide',
-    items: [
-      { name: 'SSR', title: 'Server side rendering' },
-      { name: 'ALaCarte', title: 'A la carte' }
-    ]
-  },
-  {
-    title: 'Theme generator',
-    icon: 'mdi-format-paint',
-    name: 'ThemeGenerator'
-  }
+  { divider: true }
 ]
