@@ -1,5 +1,8 @@
 <template lang="pug">
-  views-doc(:id="folder")
+  views-doc(
+    :id="folder"
+    class="px-5 white"
+  )
       section(v-if="usage")#usage
         helpers-example(
           :new-in="usage.new"
