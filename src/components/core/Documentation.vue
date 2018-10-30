@@ -1,7 +1,6 @@
 <template>
   <v-app v-cloak>
-    <core-ad />
-
+    
     <core-toolbar />
 
     <core-drawer />
